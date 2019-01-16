@@ -1,0 +1,24 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.gitignore: config/.gitignore
+    ~/.hyper.js: config/.hyper.js
+    ~/.tmux.conf: config/.tmux.conf
+    ~/.vimrc: config/.vim/.vimrc
+    ~/.vim: config/.vim
+    ~/.zshrc: config/.zshrc
+
+- shell:
+  - command: git submodule update --init --recursive
+    description: Installing submodules
+    stdout: false
+    stderr: true
+
+  - command: scripts/install.sh
+    description: Installing software
+    stdout: false
+    stderr: true
