@@ -17,7 +17,7 @@ mkdir -p ~/.oh-my-zsh/custom/themes
 if [ -d ~/.oh-my-zsh/custom/plugins/zsh-aws-vault ]; then
   cd ~/.oh-my-zsh/custom/plugins/zsh-aws-vault && git pull
 else
-  git clone git@github.com:adyromantika/zsh-aws-vault.git ~/.oh-my-zsh/custom/plugins/zsh-aws-vault
+  git clone https://github.com/adyromantika/zsh-aws-vault.git ~/.oh-my-zsh/custom/plugins/zsh-aws-vault
 fi
 
 if [ -d ~/.oh-my-zsh/custom/plugins/zsh-nvm ]; then
