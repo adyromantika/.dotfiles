@@ -10,6 +10,12 @@
     ~/.tmux.conf: config/.tmux.conf
     ~/.vimrc: config/.vim/.vimrc
     ~/.vim: config/.vim
+    ~/.zshrc-linux:
+      path: config/.zshrc-linux
+      if: "grep -i linux /proc/version >/dev/null 2>&1"
+    ~/.zshrc-mac:
+      path: config/.zshrc-mac
+      if: "uname | grep -i darwin >/dev/null 2>&1"
     ~/.zshrc: config/.zshrc
 
 - shell:

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if grep -i ubuntu /proc/version >/dev/null 2>&1; then
+if grep -i linux /proc/version >/dev/null 2>&1; then
   sudo apt update
   sudo apt install -y zsh zsh-common
 elif uname | grep -i darwin >/dev/null 2>&1; then
