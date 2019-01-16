@@ -156,7 +156,7 @@ alias pwgen='sf-pwgen -l 16'
 
 alias pip-upgrade='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
-if [ -f "/usr/local/opt/nvm/nvm." ]; then
+if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
   export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 fi
