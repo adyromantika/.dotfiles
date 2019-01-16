@@ -38,8 +38,10 @@ zle -N down-line-or-local-history
 bindkey "^[[1;2A" up-line-or-history    # [SHIFT] + Cursor up
 bindkey "^[[1;2B" down-line-or-history  # [SHIFT] + Cursor down
 
-export DEFAULT_USER="ady.romantika"
-export PATH="/Users/ady.romantika/scripts/:${PATH}"
+if [ "${USER}" = "ady.romantika" ] || [ "${USER}" = "adyromantika" ]; then
+  export DEFAULT_USER="${USER}"
+  export PATH="/Users/${DEFAULT_USER}/scripts/:${PATH}"
+fi
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
