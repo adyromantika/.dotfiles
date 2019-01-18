@@ -14,6 +14,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 mkdir -p ~/.oh-my-zsh/custom/plugins
 mkdir -p ~/.oh-my-zsh/custom/themes
 
+mkdir -p ~/.aws/cli
+
 if [ -d ~/.oh-my-zsh/custom/plugins/zsh-aws-vault ]; then
   cd ~/.oh-my-zsh/custom/plugins/zsh-aws-vault && git pull
 else

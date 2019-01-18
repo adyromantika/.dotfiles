@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - link:
+    ~/.aws/cli/alias: config/.aws/cli/alias
     ~/.gitignore: config/.gitignore
     ~/.hyper.js: config/.hyper.js
     ~/.tmux.conf: config/.tmux.conf
