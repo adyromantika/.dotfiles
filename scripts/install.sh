@@ -19,7 +19,7 @@ mkdir -p ~/.aws/cli
 if [ -d ~/.oh-my-zsh/custom/plugins/zsh-aws-vault ]; then
   cd ~/.oh-my-zsh/custom/plugins/zsh-aws-vault && git pull
 else
-  git clone https://github.com/adyromantika/zsh-aws-vault.git ~/.oh-my-zsh/custom/plugins/zsh-aws-vault
+  git clone https://github.com/blimmer/zsh-aws-vault.git ~/.oh-my-zsh/custom/plugins/zsh-aws-vault
 fi
 
 if [ -d ~/.oh-my-zsh/custom/plugins/zsh-nvm ]; then
@@ -28,8 +28,17 @@ else
   git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 fi
 
-if [ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ]; then
-  cd ~/.oh-my-zsh/custom/themes/powerlevel9k && git pull
+# Bye powerlevel9k, thank you!
+
+#if [ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ]; then
+#  cd ~/.oh-my-zsh/custom/themes/powerlevel9k && git pull
+#else
+#  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+#fi
+
+if [ -d ~/.oh-my-zsh/themes/powerlevel10k ]; then
+  cd ~/.oh-my-zsh/themes/powerlevel10k && git pull
 else
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/themes/powerlevel10k
 fi
+
