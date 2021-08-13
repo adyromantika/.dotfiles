@@ -6,7 +6,7 @@ if [ -d /opt/local/bin ]; then
     export PATH=$PATH:/opt/local/bin
 fi
 
-ZSH_THEME="POWERLEVEL10K/POWERLEVEL10K"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
   git autojump brew docker git-extras python pip cp colorize aws zsh-aws-vault kubectl kubectx zsh-nvm
@@ -44,7 +44,7 @@ if [ -f /usr/local/etc/profile.d/autojump.sh ]; then
 else
   export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
   if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
-      . /opt/local/etc/profile.d/autojump.sh
+    . /opt/local/etc/profile.d/autojump.sh
   fi
 fi
 
@@ -55,6 +55,9 @@ alias pip-upgrade='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs 
 if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
   export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
+  plugins=+(
+    zsh-nvm
+  )
 fi
 
 export PYENV_ROOT="$HOME/.pyenv"
