@@ -12,12 +12,6 @@
     ~/.vimrc: config/.vim/.vimrc
     ~/.p10k.zsh: config/.p10k.zsh
     ~/.vim: config/.vim
-    ~/.zshrc-linux:
-      path: config/.zshrc-linux
-      if: "grep -i linux /proc/version >/dev/null 2>&1"
-    ~/.zshrc-mac:
-      path: config/.zshrc-mac
-      if: "uname | grep -i darwin >/dev/null 2>&1"
     ~/.zshrc: config/.zshrc
 
 - shell:
