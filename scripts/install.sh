@@ -16,16 +16,12 @@ mkdir -p ~/.oh-my-zsh/custom/themes
 
 mkdir -p ~/.aws/cli
 
-if [ -d ~/.oh-my-zsh/custom/plugins/zsh-aws-vault ]; then
-  cd ~/.oh-my-zsh/custom/plugins/zsh-aws-vault && git pull
-else
-  git clone https://github.com/blimmer/zsh-aws-vault.git ~/.oh-my-zsh/custom/plugins/zsh-aws-vault
-fi
-
-if [ -d ~/.oh-my-zsh/custom/plugins/zsh-nvm ]; then
-  cd ~/.oh-my-zsh/custom/plugins/zsh-nvm && git pull
-else
-  git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
+if command -v aws-vault >/dev/null 2>&1; then
+  if [ -d ~/.oh-my-zsh/custom/plugins/zsh-aws-vault ]; then
+    cd ~/.oh-my-zsh/custom/plugins/zsh-aws-vault && git pull
+  else
+    git clone https://github.com/blimmer/zsh-aws-vault.git ~/.oh-my-zsh/custom/plugins/zsh-aws-vault
+  fi
 fi
 
 # Bye powerlevel9k, thank you!
