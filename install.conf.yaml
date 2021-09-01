@@ -13,6 +13,7 @@
     ~/.p10k.zsh: config/.p10k.zsh
     ~/.vim: config/.vim
     ~/.zshrc: config/.zshrc
+    ~/.hushlogin: config/.hushlogin
 
 - shell:
   - command: git submodule update --init --recursive
