@@ -4,6 +4,12 @@
 
 - clean: ['~']
 
+- shell:
+  - command: mkdir -p ~/.aws/cli
+    description: Make ~/.aws/cli directory
+    stdout: false
+    stderr: true
+
 - link:
     ~/.aws/cli/alias: config/.aws/cli/alias
     ~/.gitignore: config/.gitignore
