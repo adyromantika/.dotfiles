@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if grep -i linux /proc/version >/dev/null 2>&1; then
-  sudo apt update
-  sudo apt install -y zsh zsh-common
-elif uname | grep -i darwin >/dev/null 2>&1; then
-  if \which brew >/dev/null 2>&1; then
-    brew install zsh zsh-completions
-  fi
+if command -v apt-get >/dev/null 2>&1; then
+  sudo apt-get update
+  sudo apt-get install -y zsh zsh-common
+elif command -v pacman >/dev/null 2>&1; then
+  sudo pacman -Syu zsh
+elif command -v brew >/dev/null 2>&1; then
+  brew install zsh zsh-completions
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
