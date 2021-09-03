@@ -19,28 +19,9 @@ plugins=(
   git git-extras python pip cp colorize
 )
 
-# iTerm2
-
-if [ "${LC_TERMINAL}" = "iTerm2" ]; then
-  bindkey "^[OA" up-line-or-local-history
-  bindkey "^[OB" down-line-or-local-history
-
-  up-line-or-local-history() {
-      zle set-local-history 1
-      zle up-line-or-history
-      zle set-local-history 0
-  }
-  zle -N up-line-or-local-history
-  down-line-or-local-history() {
-      zle set-local-history 1
-      zle down-line-or-history
-      zle set-local-history 0
-  }
-  zle -N down-line-or-local-history
-
-  bindkey "^[[1;2A" up-line-or-history    # [SHIFT] + Cursor up
-  bindkey "^[[1;2B" down-line-or-history  # [SHIFT] + Cursor down
-fi
+# Separate history for each session
+unsetopt inc_append_history
+unsetopt share_history
 
 # Aliases
 \which sf-pwgen > /dev/null 2>&1 && alias pwgen='sf-pwgen -l 32'
