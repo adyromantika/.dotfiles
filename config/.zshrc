@@ -19,10 +19,6 @@ plugins=(
   git git-extras python pip cp colorize
 )
 
-# Separate history for each session
-unsetopt inc_append_history
-unsetopt share_history
-
 # Aliases
 \which sf-pwgen > /dev/null 2>&1 && alias pwgen='sf-pwgen -l 32'
 alias pip-upgrade='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
@@ -83,6 +79,10 @@ fi
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 source $ZSH/oh-my-zsh.sh
+
+# Separate history for each session
+unsetopt inc_append_history
+unsetopt share_history
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
