@@ -24,14 +24,15 @@ plugins=(
 alias pip-upgrade='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 # Tools
-if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
+if [ -f "/usr/local/opt/nvm/nvm.sh" ] || [ -f "$HOME/.nvm/nvm.sh" ]; then
   export NVM_DIR="$HOME/.nvm"
-  source "/usr/local/opt/nvm/nvm.sh"
+  if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
+    source "/usr/local/opt/nvm/nvm.sh"
+  elif [ -f "$HOME/.nvm/nvm.sh" ]; then
+    source "$NVM_DIR/nvm.sh"
+  fi
   plugins+=(nvm)
-elif [ -f "$HOME/.nvm/nvm.sh" ]; then
-  export NVM_DIR="$HOME/.nvm"
-  source "$NVM_DIR/nvm.sh"
-  plugins+=(nvm)
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 if [ -d "$HOME/.pyenv" ]; then
