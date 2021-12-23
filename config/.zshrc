@@ -34,11 +34,12 @@ elif [ -f "$HOME/.nvm/nvm.sh" ]; then
   plugins+=(nvm)
 fi
 
-if command -v pyenv >/dev/null 2>&1 && [ -d "$HOME/.pyenv" ]; then
-  eval "$(pyenv init -)"
+if [ -d "$HOME/.pyenv" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
-  export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+  eval "$(pyenv init -)"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv virtualenv-init -)"  
 fi
 
 # Linux
