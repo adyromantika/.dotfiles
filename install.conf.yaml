@@ -9,17 +9,21 @@
     description: Make ~/.aws/cli directory
     stdout: false
     stderr: true
+  - command: mkdir -p ~/.config/bat
+    description: Make ~/.config/bat directory
+    stdout: false
+    stderr: true
 
 - link:
     ~/.aws/cli/alias: config/.aws/cli/alias
     ~/.gitignore: config/.gitignore
-    ~/.hyper.js: config/.hyper.js
     ~/.tmux.conf: config/.tmux.conf
     ~/.vimrc: config/.vim/.vimrc
     ~/.p10k.zsh: config/.p10k.zsh
     ~/.vim: config/.vim
     ~/.zshrc: config/.zshrc
     ~/.hushlogin: config/.hushlogin
+    ~/.config/bat/config: config/.config/bat/config
 
 - shell:
   - command: git submodule update --init --recursive

@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Manually installed: awcli aws-vault bat vim
+#
 
 if command -v apt-get >/dev/null 2>&1; then
   sudo apt-get update
@@ -38,3 +41,9 @@ else
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 fi
 
+if command -v bat >/dev/null 2>&1 && [ -d $(bat --config-dir) ]; then
+  rm -rf /tmp/bat
+  git clone git@github.com:catppuccin/bat.git /tmp/bat
+  cd /tmp/bat
+  cp *.tmTheme "$(bat --config-dir)/themes"
+fi
