@@ -59,7 +59,7 @@ command -v docker >/dev/null 2>&1 && plugins+=(docker)
 command -v brew >/dev/null 2>&1 && plugins+=(brew)
 
 # Use curl from homebrew
-[ -d /opt/homebrew/opt/curl/bin] && export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+[ -d /opt/homebrew/opt/curl/bin ] && export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # PATHS
 if command -v go >/dev/null 2>&1; then
