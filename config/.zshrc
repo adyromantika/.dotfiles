@@ -92,3 +92,6 @@ unsetopt share_history
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Fix problem with "gpg: signing failed: Inappropriate ioctl for device" with git
+export GPG_TTY=$(tty)
