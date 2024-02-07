@@ -40,13 +40,14 @@ if [ -d "$HOME/.pyenv" ]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
   eval "$(pyenv init --path)"
-  eval "$(pyenv virtualenv-init -)"  
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 # Linux
 [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh && plugins+=(autojump)
 # Homebrew
 [ -f /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh && plugins+=(autojump)
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh && plugins+=(autojump)
 # MacPorts
 [ -f /opt/local/etc/profile.d/autojump.sh ] && source /opt/local/etc/profile.d/autojump.sh && plugins+=(autojump)
 
@@ -56,6 +57,9 @@ command -v aws >/dev/null 2>&1 && plugins+=(aws)
 command -v aws-vault >/dev/null 2>&1 && plugins+=(zsh-aws-vault)
 command -v docker >/dev/null 2>&1 && plugins+=(docker)
 command -v brew >/dev/null 2>&1 && plugins+=(brew)
+
+# Use curl from homebrew
+[ -d /opt/homebrew/opt/curl/bin] && export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # PATHS
 if command -v go >/dev/null 2>&1; then
