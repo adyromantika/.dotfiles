@@ -45,5 +45,6 @@ if command -v bat >/dev/null 2>&1 && [ -d $(bat --config-dir) ]; then
   rm -rf /tmp/bat
   git clone git@github.com:catppuccin/bat.git /tmp/bat
   cd /tmp/bat/themes
+  mkdir "$(bat --config-dir)/themes"
   cp *.tmTheme "$(bat --config-dir)/themes"
 fi
