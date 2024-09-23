@@ -26,7 +26,7 @@
     ~/.config/bat/config: config/.config/bat/config
 
 - shell:
-  - command: git submodule update --init --recursive
+  - command: git submodule update --init --recursive --remote
     description: Installing submodules
     stdout: false
     stderr: true
