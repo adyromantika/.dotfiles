@@ -95,3 +95,7 @@ unsetopt share_history
 
 # Fix problem with "gpg: signing failed: Inappropriate ioctl for device" with git
 export GPG_TTY=$(tty)
+
+batdiff() {
+    git diff --name-only --relative --diff-filter=d -z | xargs -0 bat --diff
+}
