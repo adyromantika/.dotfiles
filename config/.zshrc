@@ -24,10 +24,13 @@ plugins=(
 alias pip-upgrade='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 # Tools
-if [ -f "/usr/local/opt/nvm/nvm.sh" ] || [ -f "$HOME/.nvm/nvm.sh" ]; then
+if [ -f "/usr/local/opt/nvm/nvm.sh" ] || [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] || [ -f "$HOME/.nvm/nvm.sh" ]; then
   export NVM_DIR="$HOME/.nvm"
   if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
     source "/usr/local/opt/nvm/nvm.sh"
+  elif [ -s "/opt/homebrew/opt/nvm/nvm/sh" ]; then
+    source "/opt/homebrew/opt/nvm/nvm.sh"
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
   elif [ -f "$HOME/.nvm/nvm.sh" ]; then
     source "$NVM_DIR/nvm.sh"
   fi
