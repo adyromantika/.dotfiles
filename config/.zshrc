@@ -97,7 +97,7 @@ unsetopt share_history
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Fix problem with "gpg: signing failed: Inappropriate ioctl for device" with git
-export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
 
 batdiff() {
     git diff --name-only --relative --diff-filter=d -z | xargs -0 bat --diff
