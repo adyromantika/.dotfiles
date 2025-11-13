@@ -99,6 +99,11 @@ unsetopt share_history
 # Fix problem with "gpg: signing failed: Inappropriate ioctl for device" with git
 export GPG_TTY=$TTY
 
+# Import gcloud zsh completion
+if [ -f "/opt/homebrew/share/zsh/site-functions/_google_cloud_sdk" ]; then
+    source "/opt/homebrew/share/zsh/site-functions/_google_cloud_sdk"
+fi
+
 batdiff() {
     git diff --name-only --relative --diff-filter=d -z | xargs -0 bat --diff
 }
