@@ -79,7 +79,7 @@ fi
 [ -d "$HOME/scripts" ] && export PATH="$HOME/scripts:$PATH"
 
 if ! command -v mise >/dev/null 2>&1; then
-  Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+  # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
   if [ -f "$HOME/.rvm/scripts/rvm" ]; then
     export PATH="$PATH:$HOME/.rvm/bin"
     source $HOME/.rvm/scripts/rvm
