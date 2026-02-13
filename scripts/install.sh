@@ -10,6 +10,7 @@ elif command -v pacman >/dev/null 2>&1; then
   sudo pacman -Syu zsh
 elif command -v brew >/dev/null 2>&1; then
   brew install zsh zsh-completions
+  brew install mise
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -26,14 +27,6 @@ if command -v aws-vault >/dev/null 2>&1; then
     git clone https://github.com/blimmer/zsh-aws-vault.git ~/.oh-my-zsh/custom/plugins/zsh-aws-vault
   fi
 fi
-
-# Bye powerlevel9k, thank you!
-
-#if [ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ]; then
-#  cd ~/.oh-my-zsh/custom/themes/powerlevel9k && git pull
-#else
-#  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-#fi
 
 if [ -d ~/.oh-my-zsh/custom/themes/powerlevel10k ]; then
   cd ~/.oh-my-zsh/custom/themes/powerlevel10k && git pull

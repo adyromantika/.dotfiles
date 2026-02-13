@@ -24,27 +24,6 @@ plugins=(
 alias pip-upgrade='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 # Tools
-if [ -f "/usr/local/opt/nvm/nvm.sh" ] || [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] || [ -f "$HOME/.nvm/nvm.sh" ]; then
-  export NVM_DIR="$HOME/.nvm"
-  if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
-    source "/usr/local/opt/nvm/nvm.sh"
-  elif [ -s "/opt/homebrew/opt/nvm/nvm/sh" ]; then
-    source "/opt/homebrew/opt/nvm/nvm.sh"
-    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-  elif [ -f "$HOME/.nvm/nvm.sh" ]; then
-    source "$NVM_DIR/nvm.sh"
-  fi
-  plugins+=(nvm)
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
-
-if [ -d "$HOME/.pyenv" ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv init --path)"
-  eval "$(pyenv virtualenv-init -)"
-fi
 
 # Linux
 [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh && plugins+=(autojump)
@@ -72,12 +51,6 @@ fi
 
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/scripts" ] && export PATH="$HOME/scripts:$PATH"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-if [ -f "$HOME/.rvm/scripts/rvm" ]; then
-  export PATH="$PATH:$HOME/.rvm/bin"
-  source $HOME/.rvm/scripts/rvm
-fi
 
 if [ -f ~/.zshenv ]; then
   source ~/.zshenv
@@ -107,3 +80,5 @@ fi
 batdiff() {
     git diff --name-only --relative --diff-filter=d -z | xargs -0 bat --diff
 }
+
+eval "$(mise activate zsh)"
