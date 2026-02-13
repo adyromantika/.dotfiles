@@ -25,6 +25,32 @@ alias pip-upgrade='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs 
 
 # Tools
 
+if ! command -v mise >/dev/null 2>&1; then
+  if [ -f "/usr/local/opt/nvm/nvm.sh" ] || [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] || [ -f "$HOME/.nvm/nvm.sh" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
+      source "/usr/local/opt/nvm/nvm.sh"
+    elif [ -s "/opt/homebrew/opt/nvm/nvm/sh" ]; then
+      source "/opt/homebrew/opt/nvm/nvm.sh"
+      [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+    elif [ -f "$HOME/.nvm/nvm.sh" ]; then
+      source "$NVM_DIR/nvm.sh"
+    fi
+    plugins+=(nvm)
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  fi
+fi
+
+if ! command -v mise >/dev/null 2>&1; then
+  if [ -d "$HOME/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv virtualenv-init -)"
+  fi
+fi
+
 # Linux
 [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh && plugins+=(autojump)
 # Homebrew
@@ -52,12 +78,21 @@ fi
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/scripts" ] && export PATH="$HOME/scripts:$PATH"
 
+if ! command -v mise >/dev/null 2>&1; then
+  Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+  if [ -f "$HOME/.rvm/scripts/rvm" ]; then
+    export PATH="$PATH:$HOME/.rvm/bin"
+    source $HOME/.rvm/scripts/rvm
+  fi
+fi
+
 if [ -f ~/.zshenv ]; then
   source ~/.zshenv
 fi
 
-# Customizations
+# Other includes
 [ -f /usr/share/google-cloud-sdk/completion.zsh.inc ] && source /usr/share/google-cloud-sdk/completion.zsh.inc
+[ -f /opt/homebrew/share/zsh/site-functions/_google_cloud_sdk ] && source "/opt/homebrew/share/zsh/site-functions/_google_cloud_sdk"
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 source $ZSH/oh-my-zsh.sh
@@ -72,13 +107,10 @@ unsetopt share_history
 # Fix problem with "gpg: signing failed: Inappropriate ioctl for device" with git
 export GPG_TTY=$TTY
 
-# Import gcloud zsh completion
-if [ -f "/opt/homebrew/share/zsh/site-functions/_google_cloud_sdk" ]; then
-    source "/opt/homebrew/share/zsh/site-functions/_google_cloud_sdk"
-fi
-
 batdiff() {
     git diff --name-only --relative --diff-filter=d -z | xargs -0 bat --diff
 }
 
-eval "$(mise activate zsh)"
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
