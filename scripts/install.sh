@@ -10,7 +10,7 @@ elif command -v pacman >/dev/null 2>&1; then
   sudo pacman -Syu zsh
 elif command -v brew >/dev/null 2>&1; then
   brew install zsh zsh-completions
-  brew install mise
+  [ ! -f ~/.legacy ] && brew install mise
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
