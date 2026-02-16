@@ -111,6 +111,13 @@ batdiff() {
     git diff --name-only --relative --diff-filter=d -z | xargs -0 bat --diff
 }
 
+# Activate mise if installed
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
+
+# Add local docker into PATH, if installed (as user on Docker Desktop)
+if [ -x ~/.docker/bin/docker ]; then
+    PATH=$PATH:~/.docker/bin
+fi
+
