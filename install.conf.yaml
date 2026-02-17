@@ -39,7 +39,12 @@
       create: true
       path: config/.config/bat/config
       if: command -v bat
-    ~/.config/mise/config.toml:
+    ~/.config/mise/config.toml: # generic
       create: true
       path: config/.mise.toml
-      if: command -v mise
+      if: command -v mise && [ ! -f ~/.s5 ]
+    ~/.config/mise/config.toml: # machine-specific
+      create: true
+      path: config/.mise.toml.s5
+      if: command -v mise && [ -f ~/.s5 ]
+
