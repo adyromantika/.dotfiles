@@ -17,6 +17,3 @@ status = {
   show_env = false,
   show_tools = false,
 }
-
-[shell_alias]
-kubectl = 'kubecolor'
