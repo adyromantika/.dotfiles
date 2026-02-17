@@ -9,8 +9,19 @@ export TERM="xterm-256color"
 export ZSH=$HOME/.oh-my-zsh
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
 if [ -d /opt/local/bin ]; then
-    export PATH=$PATH:/opt/local/bin
+    PATH=$PATH:/opt/local/bin
+fi
+
+# Add local user bin
+if [ -d ~/.local/bin ]; then
+    PATH=$PATH:~/.local/bin
+fi
+
+# Add local docker into PATH, if installed (as user on Docker Desktop)
+if [ -x ~/.docker/bin/docker ]; then
+    PATH=$PATH:~/.docker/bin
 fi
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -116,12 +127,5 @@ if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 
-# Add local docker into PATH, if installed (as user on Docker Desktop)
-if [ -x ~/.docker/bin/docker ]; then
-    PATH=$PATH:~/.docker/bin
-fi
+export PATH
 
-# Add user bin
-if [ -d ~/.local/bin ]; then
-    PATH=$PATH:~/.local/bin
-fi
