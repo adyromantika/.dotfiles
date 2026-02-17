@@ -1,0 +1,4 @@
+[tools]
+bat = "latest"
+node = "14.17.5"
+

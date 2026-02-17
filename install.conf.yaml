@@ -43,16 +43,20 @@
       create: true
       path: config/.config/bat/config
       if: command -v bat
-    ~/.config/mise/conf.d/0-default.toml: # generic
+    ~/.config/mise/conf.d/default.toml: # generic
       create: true
-      path: config/.mise.toml
+      path: config/.config/mise/conf.d/.mise.default.toml
       if: command -v mise
-    ~/.config/mise/conf.d/1-legacy.toml: # machine-specific
+    ~/.config/mise/conf.d/legacy.toml: # machine-specific
       create: true
-      path: config/.mise.legacy.toml
+      path: config/.config/mise/conf.d/.mise.legacy.toml
       if: command -v mise && [ -f ~/.legacy ]
-    ~/.config/mise/conf.d/5-config.toml: # machine-specific
+    ~/.config/mise/conf.d/s5.toml: # machine-specific
       create: true
-      path: config/.mise.toml.s5
+      path: config/.config/mise/conf.d/.mise.s5.toml
       if: command -v mise && [ -f ~/.s5 ]
+    ~/.config/mise/conf.d/w.toml: # machine-specific
+      create: true
+      path: config/.config/mise/conf.d/.mise.w.toml
+      if: command -v mise && [ -f ~/.w ]
 
