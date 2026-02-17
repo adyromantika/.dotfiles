@@ -121,3 +121,7 @@ if [ -x ~/.docker/bin/docker ]; then
     PATH=$PATH:~/.docker/bin
 fi
 
+# Add user bin
+if [ -d ~/.local/bin ]; then
+    PATH=$PATH:~/.local/bin
+fi

@@ -20,6 +20,10 @@
     stdout: false
     stderr: true
 
+- create:
+    ~/.config/mise/conf.d:
+      mode: 0755
+
 - link:
     ~/.aws/cli/alias:
       create: true
@@ -39,11 +43,15 @@
       create: true
       path: config/.config/bat/config
       if: command -v bat
-    ~/.config/mise/config.toml: # generic
+    ~/.config/mise/conf.d/0-default.toml: # generic
       create: true
       path: config/.mise.toml
-      if: command -v mise && [ ! -f ~/.s5 ]
-    ~/.config/mise/config.toml: # machine-specific
+      if: command -v mise
+    ~/.config/mise/conf.d/1-legacy.toml: # machine-specific
+      create: true
+      path: config/.mise.legacy.toml
+      if: command -v mise && [ -f ~/.legacy ]
+    ~/.config/mise/conf.d/5-config.toml: # machine-specific
       create: true
       path: config/.mise.toml.s5
       if: command -v mise && [ -f ~/.s5 ]
